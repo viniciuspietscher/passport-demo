@@ -5,6 +5,23 @@
   <title>Document</title>
 </head>
 <body>
-  <h1>hello world</h1>
+  <% if (currentUser) { %>
+   <h1>Welcome back <%= currentUser.username %> </h1>
+   <a href="/log-out">Log Out</a>
+  <% } else { %>
+  <h1>Please log in</h1>
+  <% messages.forEach((msg)=>{ %>
+    <p>
+      <%= msg %>
+    </p>
+    <% }) %>
+  <form action="/log-in" method="post">
+    <label for="username">Username</label>
+    <input type="text" name="username" placeholder="username">
+    <label for="password">Password</label>
+    <input type="password" name="password">
+    <button>Log In</button>
+  </form>
+  <% } %> 
 </body>
 </html>
